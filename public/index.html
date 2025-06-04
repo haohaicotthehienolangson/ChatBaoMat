@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>💬 Chat Bảo Mật Vui Nhộn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-r from-yellow-100 via-pink-100 to-blue-100 h-screen font-sans text-gray-800">
+
+  <div id="namePrompt" class="flex items-center justify-center h-full">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center">
+      <h1 class="text-2xl font-bold mb-4">🎉 Chào mừng đến với Chat Bảo Mật 🎉</h1>
+      <p class="mb-2 text-sm text-gray-600">🧑‍💻 Hãy nhập tên của bạn để bắt đầu</p>
+      <input id="username" type="text" placeholder="👤 Tên của bạn" class="w-full p-3 rounded border border-gray-300 mb-4" />
+      <button id="enterChat" class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-2 font-semibold rounded shadow-md hover:opacity-90 transition">🚀 Vào phòng</button>
+    </div>
+  </div>
+
+  <div id="chatBox" class="hidden h-full flex flex-col md:flex-row">
+    <div class="w-full md:w-1/4 bg-white border-r border-gray-200 p-4 overflow-y-auto">
+      <h2 class="text-xl font-bold mb-4">👥 Danh sách người dùng</h2>
+      <ul id="userList" class="space-y-2 text-sm"></ul>
+    </div>
+
+    <div class="flex-1 flex flex-col p-4 space-y-4 bg-white">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input id="key" type="text" placeholder="🔑 Mã khóa AES" class="flex-1 p-2 border border-gray-300 rounded" />
+        <select id="recipient" class="p-2 border border-gray-300 rounded">
+          <option value="all">🌍 Gửi tới tất cả</option>
+        </select>
+      </div>
+
+      <div id="messages" class="flex-1 overflow-y-auto p-4 border border-gray-200 rounded bg-gray-50 space-y-3"></div>
+
+      <form id="form" class="flex gap-3">
+        <input id="input" autocomplete="off" placeholder="💬 Nhập tin nhắn tại đây..." class="flex-1 p-3 border border-gray-300 rounded" />
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">📤 Gửi</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
